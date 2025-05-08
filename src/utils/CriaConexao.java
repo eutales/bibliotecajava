@@ -8,6 +8,7 @@ package utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,9 +21,11 @@ public class CriaConexao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Conectando ao banco de dados.");
-            return DriverManager.getConnection("jdbc:mysql://localhost/biblioteca", "root", "P9544504");
+                return DriverManager.getConnection("jdbc:mysql://localhost/biblioteca","root","P9544504");
         } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao se conectar: " + e.getMessage());
             throw new SQLException(e.getMessage());
+            
         }   
         
     }
